@@ -4,7 +4,6 @@ public abstract class Animal implements Seasonable,Comparable{
     protected int weight;
     private Season season;
     protected Color color;
-    // TODO: Add auxiliary fields and functions.
 
     Animal(int weight, Season season, Color color){
         this.weight =weight;
@@ -35,6 +34,6 @@ public abstract class Animal implements Seasonable,Comparable{
     }
     @Override
     public String TOString(){
-        return "????";
+        return "My weight is: " + this.weight + " and my color is: " + this.color;
     }
 }

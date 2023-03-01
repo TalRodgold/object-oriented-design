@@ -4,15 +4,21 @@ public class Bear extends Animal {
 
     Bear(int weight, Season season) {
         // TODO: Implement.
-        super(0,null,null);
+        super(weight,season,Color.BROWN);
     }
     @Override
     public String toString() {
-        // TODO: Implement.
-        return null;
+        return "Bear. " + super.TOString();
     }
     @Override
     public void changeSeason() {
-        // TODO: Implement.
+        super.changeSeason();
+        switch (this.getCurrentSeason()) {
+            case FALL -> this.weight = (int) ((int) this.weight + 0.25 * this.weight);
+            case WINTER -> this.weight = (int) ((int) this.weight - 0.2 * this.weight);
+            case SPRING -> this.weight = (int) ((int) this.weight - 0.25 * this.weight);
+            case SUMMER -> this.weight = (int) ((int) this.weight * 1.33333);
+        }
+        this.color = Color.BROWN;
     }
 }

@@ -6,11 +6,16 @@ import java.util.Arrays;
 public class SeasonUtil {
     public static final Season[] SEASONS = Season.values();
     public static void sortSeasonable(Comparable[] seasonables) {
-        // TODO: Implement.
+        for (Comparable seasonable : seasonables) {
+            System.out.println(seasonable.toString());
+        }
     }
 
     static String reportAll(Seasonable[] seasonables) {
-        // TODO: Implement.
-        return null;
+        String to_return = "";
+        for (Seasonable seasonable : seasonables) {
+            to_return += seasonable.toString() + "\n";
+        }
+        return to_return;
     }
 }
