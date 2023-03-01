@@ -5,13 +5,13 @@ public class Caribou extends Animal {
     private String  migration;
 
     Caribou(int weight, Season season) {
-        super(weight, season, null);
+        super(weight, season, season.get_color_for_Season(season, "caribou"));
         migration = "";
     }
 
     @Override
     public String toString() {
-        return "Caribou. " + this.migration + super.TOString();
+        return "Caribou: " + this.migration + super.TOString();
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Caribou extends Animal {
                 this.color = Color.WHITE;
                 this.migration = "I am migrating south. ";
             }
-            case SPRING -> this.color = Color.BROWN;
-            case SUMMER -> migration = ": I am migrating north. ";
+            case SPRING -> {this.color = Color.BROWN;}
+            case SUMMER -> {migration = ": I am migrating north. ";}
         }    }
 }

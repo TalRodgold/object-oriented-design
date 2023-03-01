@@ -18,7 +18,7 @@ public abstract class Animal implements Seasonable,Comparable{
 
     @Override
     public int compareTo(Object o) {
-        if (this.weight == ((Animal)o).weight){
+        if (this.weight > ((Animal)o).weight){
             return 1;
         }
         return 0;

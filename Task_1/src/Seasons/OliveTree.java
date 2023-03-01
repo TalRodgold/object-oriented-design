@@ -6,7 +6,7 @@ public class OliveTree extends Tree {
 
     OliveTree(int height, Season season) {
         // TODO: Implement.
-        super(height,season,null);
+        super(height,season,season.get_color_for_Season(season, "olive"));
         gives_fruit = false;
     }
 
@@ -20,9 +20,9 @@ public class OliveTree extends Tree {
         super.changeSeason();
         switch (this.getCurrentSeason()) {
             //TODO: add olives on tree???
-            case FALL -> this.height = this.height + 5;
-            case WINTER -> this.height = this.height + 5;
-            case SPRING -> this.height = this.height + 10;
+            case FALL -> {this.height = this.height + 5;}
+            case WINTER -> {this.height = this.height + 5;}
+            case SPRING -> {this.height = this.height + 10;}
             case SUMMER -> {
                 this.height = this.height + 10;
                 gives_fruit = true;

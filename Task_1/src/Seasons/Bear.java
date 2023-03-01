@@ -4,7 +4,7 @@ public class Bear extends Animal {
 
     Bear(int weight, Season season) {
         // TODO: Implement.
-        super(weight,season,Color.BROWN);
+        super(weight,season,season.get_color_for_Season(season, "bear"));
     }
     @Override
     public String toString() {
@@ -14,10 +14,10 @@ public class Bear extends Animal {
     public void changeSeason() {
         super.changeSeason();
         switch (this.getCurrentSeason()) {
-            case FALL -> this.weight = (int) ((int) this.weight + 0.25 * this.weight);
-            case WINTER -> this.weight = (int) ((int) this.weight - 0.2 * this.weight);
-            case SPRING -> this.weight = (int) ((int) this.weight - 0.25 * this.weight);
-            case SUMMER -> this.weight = (int) ((int) this.weight * 1.33333);
+            case FALL -> {this.weight = (int) ((int) this.weight + 0.25 * this.weight);}
+            case WINTER -> {this.weight = (int) ((int) this.weight - 0.2 * this.weight);}
+            case SPRING -> {this.weight = (int) ((int) this.weight - 0.25 * this.weight);}
+            case SUMMER -> {this.weight = (int) ((int) this.weight * 1.33333);}
         }
         this.color = Color.BROWN;
     }

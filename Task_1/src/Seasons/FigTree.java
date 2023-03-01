@@ -5,7 +5,7 @@ public class FigTree extends Tree {
     private String leafs;
 
     FigTree(int height, Season season) {
-        super(height,season,season.);
+        super(height,season,season.get_color_for_Season(season, "fig"));
         this.leafs = "";
     }
 
