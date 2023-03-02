@@ -17,12 +17,13 @@ public class Caribou extends Animal {
     @Override
     public void changeSeason() {
         super.changeSeason();
-        switch (this.getCurrentSeason()) {
-            case WINTER -> {
-                this.color = Color.WHITE;
-                this.migration = "I am migrating south. ";
-            }
-            case SPRING -> {this.color = Color.BROWN;}
-            case SUMMER -> {migration = ": I am migrating north. ";}
-        }    }
+        if (this.getCurrentSeason() == Season.WINTER) {
+            this.color = Color.WHITE;
+            this.migration = "I am migrating south. ";
+        } else if (this.getCurrentSeason() == Season.SPRING) {
+            this.color = Color.BROWN;
+        } else if (this.getCurrentSeason() == Season.SUMMER) {
+            migration = ": I am migrating north. ";
+        }
+    }
 }

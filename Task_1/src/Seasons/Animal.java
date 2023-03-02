@@ -25,11 +25,17 @@ public abstract class Animal implements Seasonable,Comparable{
     }
     @Override
     public void changeSeason(){
-        switch (this.season){
-            case FALL -> this.season = Season.WINTER;
-            case WINTER -> this.season = Season.SPRING;
-            case SPRING -> this.season = Season.SUMMER;
-            case SUMMER -> this.season = Season.FALL;
+        if (this.getCurrentSeason() == Season.FALL){
+            this.season = Season.WINTER;
+        }
+        else if (this.getCurrentSeason() == Season.WINTER){
+            this.season = Season.SPRING;
+        }
+        else if (this.getCurrentSeason() == Season.SPRING){
+            this.season = Season.SUMMER;
+        }
+        else if (this.getCurrentSeason() == Season.SUMMER){
+            this.season = Season.FALL;
         }
     }
     @Override

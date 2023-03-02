@@ -2,12 +2,10 @@ package Seasons;
 
 public class OliveTree extends Tree {
 
-    private static boolean gives_fruit;
 
     OliveTree(int height, Season season) {
         // TODO: Implement.
-        super(height,season,season.get_color_for_Season(season, "olive"));
-        gives_fruit = false;
+        super(height,season,season.get_color_for_Season(season, "olive"), season.get_fruit_for_season(season, "olive"));
     }
 
     @Override
@@ -18,14 +16,22 @@ public class OliveTree extends Tree {
     @Override
     public void changeSeason() {
         super.changeSeason();
-        switch (this.getCurrentSeason()) {
-            //TODO: add olives on tree???
-            case FALL -> {this.height = this.height + 5;}
-            case WINTER -> {this.height = this.height + 5;}
-            case SPRING -> {this.height = this.height + 10;}
-            case SUMMER -> {
-                this.height = this.height + 10;
-                gives_fruit = true;
-            }
-        }        }
+        if (this.getCurrentSeason() == Season.FALL){
+            this.height = this.height + 5;
+            this.fruit = false;
+        }
+        else if (this.getCurrentSeason() == Season.WINTER){
+            this.height = this.height + 5;
+            this.fruit = false;
+        }
+        else if (this.getCurrentSeason() == Season.SPRING){
+            this.height = this.height + 10;
+            this.fruit = false;
+        }
+        else if (this.getCurrentSeason() == Season.SUMMER){
+            this.height = this.height + 10;
+            this.fruit = true;
+        }
+
+    }
 }

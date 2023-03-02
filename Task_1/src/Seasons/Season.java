@@ -5,43 +5,46 @@ public enum Season {
 
     Color get_color_for_Season(Season s, String type) {
         Color answer = null;
-        switch (type) {
-            case "bear" -> {
-                switch (s) {
-                    case FALL -> {answer = Color.BROWN;}
-                    case WINTER -> {answer = Color.BROWN;}
-                    case SPRING -> {answer = Color.BROWN;}
-                    case SUMMER -> {answer = Color.BROWN;}
-                }
+        if (type == "bear"){
+            answer = Color.BROWN;
+        }
+        else if (type == "caribou"){
+            answer = Color.BROWN;
+        }
+        else if (type == "olive"){
+            answer = Color.GREEN;
+        }
+        else if (type == "fig"){
+            if (s == Season.FALL){
+                answer = Color.YELLOW;
             }
-            case "caribou" -> {
-                switch (s) {
-                    case FALL -> {answer = Color.BROWN;}
-                    case WINTER -> {answer = Color.BROWN;}
-                    case SPRING -> {answer = Color.BROWN;}
-                    case SUMMER -> {answer = Color.BROWN;}
-                }
+            else if (s == Season.WINTER){
+                answer = Color.YELLOW;
             }
-            case "olive" -> {
-                switch (s) {
-                    case FALL -> {answer = Color.GREEN;}
-                    case WINTER -> {answer = Color.GREEN;}
-                    case SPRING -> {answer = Color.GREEN;}
-                    case SUMMER -> {answer = Color.GREEN;}
-                }
+            if (s == Season.SPRING){
+                answer = Color.GREEN;
             }
-            case "fig" -> {
-                switch (s) {
-                    case FALL -> {answer = Color.YELLOW;}
-                    case WINTER -> {answer = Color.YELLOW;}
-                    case SPRING -> {answer = Color.GREEN;}
-                    case SUMMER -> {answer = Color.GREEN;}
-                }
+            if (s == Season.SUMMER){
+                answer = Color.GREEN;
             }
         }
         return answer;
     }
-
+    boolean get_fruit_for_season(Season s, String type) {
+        if (type == "fig") {
+            if (s == Season.SUMMER){
+                return true;
+            }
+            else return false;
+        }
+        if (type == "olive"){
+            if (s == Season.FALL){
+                return true;
+            }
+            else return false;
+        }
+        return false;
+    }
 }
 
 
