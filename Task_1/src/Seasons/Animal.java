@@ -21,6 +21,9 @@ public abstract class Animal implements Seasonable,Comparable{
         if (this.weight > ((Animal)o).weight){
             return 1;
         }
+        else if (this.weight < ((Animal)o).weight){
+            return -1;
+        }
         return 0;
     }
     @Override

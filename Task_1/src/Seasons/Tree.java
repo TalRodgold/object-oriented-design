@@ -24,6 +24,9 @@ public abstract class Tree implements Comparable, Seasonable {
         if (this.height > ((Tree)o).height){
             return 1;
         }
+        else if (this.height < ((Tree)o).height){
+            return -1;
+        }
         return 0;
     }
 
