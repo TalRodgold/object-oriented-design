@@ -25,6 +25,13 @@ public class SeasonUtilTest {
         System.out.println("\n---All trees---\n");
         System.out.println(SeasonUtil.reportAll(trees));
 
+        System.out.println("\n---Sorting animals---\n");
+        SeasonUtil.sortSeasonable(animals);
+        System.out.println(SeasonUtil.reportAll(animals));
+
+        System.out.println("\n---Sorting trees---\n");
+        SeasonUtil.sortSeasonable(trees);
+        System.out.println(SeasonUtil.reportAll(trees));
 
         Seasonable[] seasonables = new Seasonable[TOTAL*2] ;
         for (int i = 0; i < TOTAL; i++) {

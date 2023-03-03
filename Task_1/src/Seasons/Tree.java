@@ -49,7 +49,7 @@ public abstract class Tree implements Comparable, Seasonable {
     @Override
     public String TOString(){
         if (this.leavesColor == null){
-            return "My weight is: " + this.height + "and I have no leaves";
+            return "My height is: " + this.height + " and I have no leaves";
         }
         if (this.fruit){
             return "I give fruit. My height is: " + this.height + " and my color is: " + this.leavesColor;

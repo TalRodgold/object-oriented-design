@@ -9,7 +9,12 @@ public class SeasonUtil {
     static String reportAll(Seasonable[] seasonables) {
         String to_return = "";
         for (Seasonable seasonable : seasonables) {
-            to_return += seasonable.toString() + "\n";
+            if(seasonables[seasonables.length -1] == seasonable)
+                to_return += seasonable.toString();
+            else
+            {
+                to_return += seasonable.toString() + "\n";
+            }
         }
         return to_return;
     }
