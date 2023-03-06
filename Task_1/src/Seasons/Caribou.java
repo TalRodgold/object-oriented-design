@@ -22,8 +22,11 @@ public class Caribou extends Animal {
             this.migration = "I am migrating south. ";
         } else if (this.getCurrentSeason() == Season.SPRING) {
             this.color = Color.BROWN;
+            this.migration = "";
         } else if (this.getCurrentSeason() == Season.SUMMER) {
-            migration = ": I am migrating north. ";
+            migration = "I am migrating north. ";
         }
+        else
+            this.migration = "";
     }
 }

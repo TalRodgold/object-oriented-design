@@ -9,7 +9,11 @@ public enum Season {
             answer = Color.BROWN;
         }
         else if (type == "caribou"){
-            answer = Color.BROWN;
+            if (s == Season.WINTER){
+                answer = Color.WHITE;
+            }
+             else
+                 answer = Color.BROWN;
         }
         else if (type == "olive"){
             answer = Color.GREEN;
@@ -19,7 +23,7 @@ public enum Season {
                 answer = Color.YELLOW;
             }
             else if (s == Season.WINTER){
-                answer = Color.YELLOW;
+                answer = null;
             }
             if (s == Season.SPRING){
                 answer = Color.GREEN;

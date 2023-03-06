@@ -18,7 +18,7 @@ public class OliveTree extends Tree {
         super.changeSeason();
         if (this.getCurrentSeason() == Season.FALL){
             this.height = this.height + 5;
-            this.fruit = false;
+            this.fruit = true;
         }
         else if (this.getCurrentSeason() == Season.WINTER){
             this.height = this.height + 5;
@@ -30,7 +30,7 @@ public class OliveTree extends Tree {
         }
         else if (this.getCurrentSeason() == Season.SUMMER){
             this.height = this.height + 10;
-            this.fruit = true;
+            this.fruit = false;
         }
 
     }

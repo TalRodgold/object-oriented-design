@@ -30,7 +30,8 @@ public class FigTree extends Tree {
             this.fruit = false;
         }
         else if (this.getCurrentSeason() == Season.SUMMER){
-            this.height = this.height + 20;
+            this.height = this.height + 30;
+            this.leavesColor = Color.GREEN;
             this.fruit = true;
         }
     }

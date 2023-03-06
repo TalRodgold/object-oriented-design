@@ -38,10 +38,10 @@ public abstract class Tree implements Comparable, Seasonable {
         else if (this.season == Season.WINTER){
             this.season = Season.SPRING;
         }
-        if (this.season == Season.SPRING){
+        else if (this.season == Season.SPRING){
             this.season = Season.SUMMER;
         }
-        if (this.season == Season.SUMMER){
+        else if (this.season == Season.SUMMER){
             this.season = Season.FALL;
         }
     }
