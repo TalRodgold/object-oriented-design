@@ -1,16 +1,29 @@
 package Seasons;
-
 public class FigTree extends Tree {
 
-
-    FigTree(int height, Season season) {
-        super(height,season,season.get_color_for_Season(season, "fig"), season.get_fruit_for_season(season, "fig"));
+    /**
+     * Initializes a new instance of the FigTree class with the specified height and season.
+     *
+     * @param height the height of the tree in centimeters
+     * @param season the current season of the tree
+     */
+    public FigTree(int height, Season season) {
+        super(height, season, season.get_color_for_Season(season, "fig"), season.get_fruit_for_season(season, "fig"));
     }
 
+    /**
+     * Returns a string that represents the current state of the FigTree object.
+     *
+     * @return a string that represents the current state of the FigTree object
+     */
     @Override
     public String toString() {
         return "Fig tree. " + super.TOString();
     }
+
+    /**
+     * Changes the current season of the tree and updates its properties accordingly.
+     */
     @Override
     public void changeSeason() {
         super.changeSeason();
