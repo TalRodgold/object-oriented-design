@@ -1,12 +1,9 @@
 package Ex05IBLSkeleton;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.MatchResult;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
 
 public class Customer {
     private long id;
@@ -18,9 +15,12 @@ public class Customer {
 
     public Customer(String customerInfo)
     {
-       id = Long.parseLong(extractValue(customerInfo, customerRegex));
-       name = extractValue(customerInfo, nameRegex);
-       tier = Integer.parseInt(extractValue(customerInfo, tierRegex));
+        String parsed_customer = extractValue(customerRegex, customerInfo);
+        String parsed_name  = extractValue(nameRegex, customerInfo);
+        String parsed_tier  = extractValue(tierRegex, customerInfo);
+        id = Long.parseLong(parsed_customer);
+        name = parsed_name;
+        tier = Integer.parseInt(parsed_tier);
     }
 
     public Customer(long Cid,String Cname, int Ctier)
@@ -59,9 +59,12 @@ public class Customer {
         this.tier = tier;
     }
 
-    private static String extractValue(String text, String regex) {
+    private static String extractValue(String regex, String text) {
         Matcher matcher = Pattern.compile(regex).matcher(text);
-        MatchResult matchResult = matcher.toMatchResult();
-        return matchResult.group(1);
+        if (matcher.find()) {
+            MatchResult matchResult = matcher.toMatchResult();
+            return matchResult.group(1);
+        }
+        return "FAILED"; // Return failed if no match is found
     }
 }

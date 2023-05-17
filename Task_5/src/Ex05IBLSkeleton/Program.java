@@ -12,7 +12,6 @@ import static java.util.concurrent.TimeUnit.*;
 class Program
 {
     public static void main(String args[]) {
-        Customer my = new Customer("customer: 7 name: customer7 tier: 3");
         IBL myBl = new BL();
 
         System.out.println("---------getProductById:--------");
