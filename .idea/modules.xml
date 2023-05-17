@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Task_1/Task_1.iml" filepath="$PROJECT_DIR$/Task_1/Task_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_5/Task_5.iml" filepath="$PROJECT_DIR$/Task_5/Task_5.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/object-oriented-design.iml" filepath="$PROJECT_DIR$/.idea/object-oriented-design.iml" />
     </modules>
   </component>
