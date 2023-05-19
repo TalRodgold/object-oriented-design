@@ -1,10 +1,17 @@
 package Ex05IBLSkeleton;
 
 import java.io.IOException;
+import java.io.StreamCorruptedException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors.*;
 import java.util.stream.Collectors;
+import java.util.stream.*;
+
+
 
 
 public class DataSource {
@@ -30,8 +37,19 @@ public class DataSource {
         } catch (IOException e) { e.printStackTrace(); }
     }
     public static List<Customer> readCustomersfromFile() throws IOException {
-         //To Do
-        return null;
+
+                Stream<String> stream = Files.lines(Paths.get(customersPath));
+                Iterator<String> customersIterator = stream.iterator();
+                while (customersIterator.hasNext()) {
+                    Customer customer = new Customer(customersIterator.next());
+                    allCustomers.add(customer);
+
+                    //System.out.println(customersIterator.next());
+                }
+                if (allCustomers.isEmpty()){
+                    throw new IOException();}
+                return allCustomers;
+
    }
 
     public static List<Order> readOrdersfromFile() throws IOException {

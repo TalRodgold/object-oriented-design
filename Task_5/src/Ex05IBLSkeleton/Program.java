@@ -13,6 +13,7 @@ class Program
 {
     public static void main(String args[]) {
         IBL myBl = new BL();
+        List<Customer> customer = new Customer(DataSource.readCustomersfromFile())
 
         System.out.println("---------getProductById:--------");
         System.out.println(myBl.getProductById(495L));
