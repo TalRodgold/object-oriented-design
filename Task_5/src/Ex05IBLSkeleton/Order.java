@@ -23,7 +23,7 @@ public class Order {
     public static String statusRegex = "status:\\s([A-Za-z]+)";
     public static String customrRegex = "customr id:\\s(\\d+)";
 
-    public Order(String orderInfo) throws ParseException {
+    public Order(String orderInfo) {
         String parsed_order = extractValue(orderRegex, orderInfo);
         String parsed_orderDate  = extractValue(orderDateRegex, orderInfo);
         String parsed_deliveryDate  = extractValue(deliveryDateRegex, orderInfo);
@@ -31,8 +31,14 @@ public class Order {
         String parsed_customr  = extractValue(customrRegex, orderInfo);
 
         orderId = Long.parseLong(parsed_order);
-        orderDate = new SimpleDateFormat("dd/MM/yyyy").parse(parsed_orderDate);
-        deliveryDate = new SimpleDateFormat("dd/MM/yyyy").parse(parsed_deliveryDate);
+        try{
+            orderDate = new SimpleDateFormat("dd/MM/yyyy").parse(parsed_orderDate);
+        }
+        catch (java.text.ParseException e){ System.out.println("ERROR");}
+        try{
+            deliveryDate = new SimpleDateFormat("dd/MM/yyyy").parse(parsed_deliveryDate);
+        }
+        catch (java.text.ParseException e){ System.out.println("ERROR");}
         status = OrderStatus.valueOf(parsed_status);
         customrId = Long.parseLong(parsed_customr);
     }

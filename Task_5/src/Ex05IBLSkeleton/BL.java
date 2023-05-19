@@ -20,88 +20,118 @@ import static java.util.stream.Collectors.*;
 public class BL implements IBL {
     @Override
     public Product getProductById(long productId) {
-
-           return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Order getOrderById(long orderId) {
-        //To do
-        return null;
+        return DataSource.allOrders.stream()
+                .filter(item -> item.getOrderId()== orderId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Customer getCustomerById(long customerId) {
-                    return null;
-    }
+        return DataSource.allCustomers.stream()
+                .filter(item -> item.getId() == customerId)
+                .findFirst()
+                .orElse(null);    }
 
 
     @Override
     public List<Product> getProducts(ProductCategory cat, double price) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getCategory() == cat && item.getPrice() <= price)
+                .sorted(Comparator.comparingLong(Product::getProductId))
+                .collect(Collectors.toList());
     }
+
 
     @Override
     public List<Customer> popularCustomers() {
-        //To do
-        return null;
-    }
+        return DataSource.allCustomers.stream()
+                .filter(item -> item.getTier() == 3 && DataSource.allOrders.stream()
+                        .filter(item2 -> item2.getCustomrId() == item.getId())
+                        .collect(Collectors.toList()).size() > 10)
+                .sorted(Comparator.comparingLong(Customer::getId))
+                .collect(Collectors.toList());
+        }
+
 
     @Override
     public List<Order> getCustomerOrders(long customerId) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public long numberOfProductInOrder(long orderId) {
-        //To do
-        return 0;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Product> getPopularOrderedProduct(int orderedtimes) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Product> getOrderProducts(long orderId)
     {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Customer> getCustomersWhoOrderedProduct(long productId) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Product getMaxOrderedProduct() {
-        //To do
-        return null;
-
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
     @Override
     public double sumOfOrder(long orderID) {
-        //To do
-        return 0;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Order> getExpensiveOrders(double price) {
-        //To do
-        return null;
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<Customer> ThreeTierCustomerWithMaxOrders() {
-        //To do
-        return null;
-
+        return DataSource.allProducts.stream()
+                .filter(item -> item.getProductId() == productId)
+                .findFirst()
+                .orElse(null);
     }
 
 }

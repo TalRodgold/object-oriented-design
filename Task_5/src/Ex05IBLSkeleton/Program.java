@@ -1,5 +1,6 @@
 package Ex05IBLSkeleton;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,7 +14,6 @@ class Program
 {
     public static void main(String args[]) {
         IBL myBl = new BL();
-
         System.out.println("---------getProductById:--------");
         System.out.println(myBl.getProductById(495L));
 
