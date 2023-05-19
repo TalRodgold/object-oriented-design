@@ -1,5 +1,6 @@
 <component name="libraryTable">
-  <library name="groovy-4.0.2">
+  <library name="groovy-4.0.2" type="groovy-sdk">
+    <properties version="4.0.2" />
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/Task_5/lib/groovy-astbuilder-4.0.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/Task_5/lib/groovy-datetime-4.0.2.jar!/" />
