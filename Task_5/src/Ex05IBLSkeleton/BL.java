@@ -1,19 +1,10 @@
 package Ex05IBLSkeleton;
-
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import static java.util.Collections.reverseOrder;
-import static java.util.Map.Entry.comparingByValue;
-import static java.util.function.UnaryOperator.identity;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.groupingBy;
 
 public class BL implements IBL {
     public Product getProductById(long productId) {
@@ -56,66 +47,123 @@ public class BL implements IBL {
 
 
     public List<Order> getCustomerOrders(long customerId) {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return DataSource.allOrders.stream()
+                .filter(order -> order.getCustomrId() == customerId)
+                .sorted(Comparator.comparingLong(Order::getOrderId))
+                .collect(Collectors.toList());
     }
 
     public long numberOfProductInOrder(long orderId) {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return DataSource.allOrderProducts.stream()
+                .filter(orderProduct -> orderProduct.getOrderId() == orderId)
+                .mapToLong(OrderProduct::getProductId) .distinct()
+                .count();
     }
 
     public List<Product> getPopularOrderedProduct(int orderedtimes) {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        Map<Long, Integer> productOccurrences = DataSource.allOrderProducts.stream()
+                .collect(groupingBy(OrderProduct::getProductId,
+                        Collectors.summingInt(OrderProduct::getQuantity)));
+
+        return productOccurrences.entrySet().stream()
+                .filter(entry -> entry.getValue() >= orderedtimes)
+                .map(entry -> getProductById(entry.getKey()))
+                .sorted(Comparator.comparingLong(Product::getProductId))
+                .collect(Collectors.toList());
+
     }
 
     public List<Product> getOrderProducts(long orderId)
     {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return DataSource.allOrderProducts.stream()
+                .filter(orderProduct -> orderProduct.getOrderId() == orderId)
+                .map(orderProduct -> getProductById(orderProduct.getProductId()))
+                .sorted(Comparator.comparingLong(Product::getProductId))
+                .collect(Collectors.toList());
     }
 
     public List<Customer> getCustomersWhoOrderedProduct(long productId) {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return DataSource.allOrders.stream()
+                .filter(order -> {
+                    List<OrderProduct> orderProducts = getOrderProductsByOrderId(order.getOrderId());
+                    return orderProducts.stream()
+                            .anyMatch(orderProduct -> orderProduct.getProductId() == productId);
+                })
+                .map(order -> getCustomerById(order.getCustomrId()))
+                .distinct()
+                .sorted(Comparator.comparingLong(Customer::getId))
+                .collect(Collectors.toList());
+
+    }
+    private List<OrderProduct> getOrderProductsByOrderId(long orderId) {
+        return DataSource.allOrderProducts.stream()
+                .filter(orderProduct -> orderProduct.getOrderId() == orderId)
+                .collect(Collectors.toList());
     }
 
+
     public Product getMaxOrderedProduct() {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return getProductById( DataSource.allOrderProducts.stream()
+                .collect(groupingBy(OrderProduct::getProductId))
+                .entrySet().stream()
+                .max(Comparator.comparing(item->item.getValue().size())).orElse(null)
+                .getKey());
+
     }
+
+    // Helper method to retrieve the product by its ID
+
     public double sumOfOrder(long orderID) {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        return DataSource.allOrderProducts.stream()
+                .filter(orderProduct -> orderProduct.getOrderId() == orderID)
+                .mapToDouble(orderProduct -> {
+                    Product product = getProductById(orderProduct.getProductId());
+                    return product.getPrice() * orderProduct.getQuantity();
+                })
+                .sum();
     }
 
     public List<Order> getExpensiveOrders(double price) {
+        return DataSource.allOrders.stream()
+                .filter(order -> calculateTotalCost(order) > price)
+                .sorted(Comparator.comparingLong(Order::getOrderId))
+                .collect(Collectors.toList());
+    }
+
+    private double calculateTotalCost(Order order) {
+        return DataSource.allOrderProducts.stream()
+                .filter(orderProduct -> orderProduct.getOrderId() == order.getOrderId())
+                .mapToDouble(orderProduct -> {
+                    Product product = getProductByIdInner(orderProduct.getProductId());
+                    return product.getPrice() * orderProduct.getQuantity();
+                })
+                .sum();
+    }
+
+    private Product getProductByIdInner(long productId) {
         return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
+                .filter(product -> product.getProductId() == productId)
                 .findFirst()
                 .orElse(null);
     }
+
 
     public List<Customer> ThreeTierCustomerWithMaxOrders() {
-        return DataSource.allProducts.stream()
-                .filter(item -> item.getProductId() == productId)
-                .findFirst()
-                .orElse(null);
+        int maxOrderCount = DataSource.allCustomers.stream()
+                .filter(customer -> customer.getTier() == 3)
+                .mapToInt(customer -> getCustomerOrderCount(customer))
+                .max()
+                .orElse(0);
+
+        return DataSource.allCustomers.stream()
+                .filter(customer -> customer.getTier() == 3 && getCustomerOrderCount(customer) == maxOrderCount)
+                .sorted(Comparator.comparingLong(Customer::getId))
+                .collect(Collectors.toList());
     }
 
-}
+    // Helper method to get the number of orders for a customer
+    private int getCustomerOrderCount(Customer customer) {
+        return (int) DataSource.allOrders.stream()
+                .filter(order -> order.getCustomrId() == customer.getId())
+                .count();
+    }}

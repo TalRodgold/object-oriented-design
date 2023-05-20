@@ -1,11 +1,8 @@
 package Ex05IBLSkeleton;
 
-import java.text.SimpleDateFormat;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static java.lang.Long.parseLong;
 
 public class Product
 {
@@ -15,7 +12,7 @@ public class Product
     private double price;
 
     public static String productIdRegex = "Product:\\s(\\d+)";
-    public static String productNameRegex = "product:\\s(\\d+)\\s([A-Za-z0-9]+)";
+    public static String productNameRegex = "Product:\\s\\d+\\s([^:]+)\\scategory";
     public static String categoryRegex = "category:\\s([A-Za-z]+)";
     public static String priceRegex = "price:\\s([\\d.]+)";
 
