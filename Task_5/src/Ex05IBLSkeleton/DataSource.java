@@ -8,7 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-
+/**
+ * Represents the data source for the application, providing access to customers, orders, products, and order products.
+ */
 public class DataSource {
 
     public static List<Customer> allCustomers;
@@ -17,63 +19,87 @@ public class DataSource {
     public static List<OrderProduct> allOrderProducts;
     // Update this path according to your data files location
     public static String basePath = "Task_5/src/Ex05IBLSkeleton/data_files/";
-    public static String customersPath = basePath +"customers.txt";
-    public static String ordersPath = basePath +"orders.txt";
-    public static String productsPath = basePath +"products.txt";
-    public static String orderProductPath = basePath +"orderProduct.txt";
+    public static String customersPath = basePath + "customers.txt";
+    public static String ordersPath = basePath + "orders.txt";
+    public static String productsPath = basePath + "products.txt";
+    public static String orderProductPath = basePath + "orderProduct.txt";
 
-    static
-    {
+    static {
         try {
-            allCustomers = readCustomersfromFile();
-            allOrders = readOrdersfromFile();
-            allProducts = readProductsfromFile();
-            allOrderProducts = readOrderProductsfromFile();
-        } catch (IOException e) { e.printStackTrace(); }
+            allCustomers = readCustomersFromFile();
+            allOrders = readOrdersFromFile();
+            allProducts = readProductsFromFile();
+            allOrderProducts = readOrderProductsFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    public static List<Customer> readCustomersfromFile() throws IOException {
-        List<Customer> new_list = new ArrayList<>();
+
+    /**
+     * Reads the customer data from the file and returns a list of Customer objects.
+     *
+     * @return A list of Customer objects.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
+    public static List<Customer> readCustomersFromFile() throws IOException {
+        List<Customer> newList = new ArrayList<>();
         Stream<String> stream = Files.lines(Paths.get(customersPath));
         Iterator<String> customersIterator = stream.iterator();
         while (customersIterator.hasNext()) {
             Customer customer = new Customer(customersIterator.next());
-            new_list.add(customer);
+            newList.add(customer);
         }
-        return new_list;
-   }
+        return newList;
+    }
 
-    public static List<Order> readOrdersfromFile() throws IOException {
-        List<Order> new_list = new ArrayList<>();
+    /**
+     * Reads the order data from the file and returns a list of Order objects.
+     *
+     * @return A list of Order objects.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
+    public static List<Order> readOrdersFromFile() throws IOException {
+        List<Order> newList = new ArrayList<>();
         Stream<String> stream = Files.lines(Paths.get(ordersPath));
         Iterator<String> ordersIterator = stream.iterator();
         while (ordersIterator.hasNext()) {
             Order order = new Order(ordersIterator.next());
-            new_list.add(order);
+            newList.add(order);
         }
-        return new_list;
+        return newList;
     }
 
-    public static List<Product> readProductsfromFile() throws IOException {
-        List<Product> new_list = new ArrayList<>();
+    /**
+     * Reads the product data from the file and returns a list of Product objects.
+     *
+     * @return A list of Product objects.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
+    public static List<Product> readProductsFromFile() throws IOException {
+        List<Product> newList = new ArrayList<>();
         Stream<String> stream = Files.lines(Paths.get(productsPath));
         Iterator<String> productsIterator = stream.iterator();
         while (productsIterator.hasNext()) {
-            Product products = new Product(productsIterator.next());
-            new_list.add(products);
+            Product product = new Product(productsIterator.next());
+            newList.add(product);
         }
-        return new_list;
+        return newList;
     }
 
-    public static List<OrderProduct> readOrderProductsfromFile() throws IOException {
-        List<OrderProduct> new_list = new ArrayList<>();
+    /**
+     * Reads the order product data from the file and returns a list of OrderProduct objects.
+     *
+     * @return A list of OrderProduct objects.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
+    public static List<OrderProduct> readOrderProductsFromFile() throws IOException {
+        List<OrderProduct> newList = new ArrayList<>();
         Stream<String> stream = Files.lines(Paths.get(orderProductPath));
         Iterator<String> orderProductIterator = stream.iterator();
         while (orderProductIterator.hasNext()) {
             OrderProduct orderProduct = new OrderProduct(orderProductIterator.next());
-            new_list.add(orderProduct);
+            newList.add(orderProduct);
         }
-        return new_list;
+        return newList;
     }
 }
-
-
