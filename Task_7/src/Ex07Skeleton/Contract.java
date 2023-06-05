@@ -1,3 +1,4 @@
+package Ex07Skeleton;
 
 public class Contract implements Paper {
     @Override

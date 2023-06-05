@@ -1,8 +1,5 @@
- 
+package Ex07Skeleton;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 //A utility class converting element description to the corresponding element instance

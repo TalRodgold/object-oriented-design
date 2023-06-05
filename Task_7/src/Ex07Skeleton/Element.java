@@ -1,9 +1,12 @@
- 
+package Ex07Skeleton;
+
 public abstract class Element{
     protected double width;
     protected double length;
     private String path;
     private String name;
+
+    abstract void accept(Visitor visitor);
 
     public double getWidth() {
         return width;

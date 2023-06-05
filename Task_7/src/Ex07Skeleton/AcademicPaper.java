@@ -1,4 +1,4 @@
- 
+package Ex07Skeleton;
 
 public class AcademicPaper implements Paper{
     @Override

@@ -1,4 +1,4 @@
- 
+package Ex07Skeleton;
 
 public class Kid extends Element {
     private int birthYear;
@@ -17,6 +17,11 @@ public class Kid extends Element {
 
     public Color getHairColor() {
         return hairColor;
+    }
+
+    @Override
+    void accept(Visitor visitor){
+        visitor.visit(this);
     }
 
     @Override

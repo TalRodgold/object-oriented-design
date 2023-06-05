@@ -1,14 +1,12 @@
- 
+package Ex07Skeleton;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toMap;
 
 public class Main {
 
@@ -48,17 +46,41 @@ public class Main {
         while (!(myString = scanner.nextLine()).equals("q")) {
             switch (myString) {
                 case "c":
-                    //TODO: Add counting behavior
+                    System.out.println(( root.pathToElementMap).size());
                     break;
                 case "sh":
-                    //TODO: Add short representation behavior
+                    for (Entry<String, Element> entry : root.pathToElementMap.entrySet()) {
+                        String key = entry.getKey();
+                        System.out.println(key);
+                    }
                     break;
                 case "ta":
-                    //TODO: Add area calculation behavior
+                    long total_area = 0;
+                    for (Entry<String, Element> entry : root.pathToElementMap.entrySet()) {
+                        total_area = (long) (total_area + (entry.getValue().getLength() * entry.getValue().getWidth()));
+
+                        Element computer = entry.getValue();
+                        computer.accept(new TotalAreaVisitor());
+                        TotalAreaVisitor costVisitor = new TotalAreaVisitor();
+                        computer.accept(costVisitor);
+                        total_area += costVisitor.totalArea;
+                    }
+                    System.out.println(total_area);
                     break;
                 case "lp":
-                    //TODO: Add long representation behavior
+                    for (Entry<String, Element> entry : root.pathToElementMap.entrySet()) {
+                        System.out.println(entry.toString());
+                    }
+
+                        //An empty island named Madagascar.
+                    // A lake named Grand containing:
+                    // A boat made of timber material.
+                    // An island named Glover containing:
+                    // A tree with an amount of 2500 leaves.
+                    // A 10 year old kid with black hair.
+                    // A kite of color: red.
                     break;
+
 
 
             }

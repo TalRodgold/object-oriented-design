@@ -1,4 +1,5 @@
- 
+package Ex07Skeleton;
+
 public class Tree extends Element {
 
     int leavesAmount;
@@ -13,6 +14,11 @@ public class Tree extends Element {
     }
 
     @Override
+    void accept(Visitor visitor){
+        visitor.visit(this);
+    }
+
+    @Override
      public String getName() {
         return "tree";
     }
@@ -21,4 +27,10 @@ public class Tree extends Element {
     public Habitat getHabitat() {
         return Habitat.TERRESTRIAL;
     }
+
+    @Override
+    public String toString() {
+        return "A tree with an amount of " + leavesAmount + " leaves.\n";
+    }
+
 }

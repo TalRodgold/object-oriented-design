@@ -1,4 +1,4 @@
- 
+package Ex07Skeleton;
 
 public class Boat extends Element{
     Material material;
@@ -16,7 +16,17 @@ public class Boat extends Element{
     }
 
     @Override
+    void accept(Visitor visitor){
+        visitor.visit(this);
+    }
+
+    @Override
     public Habitat getHabitat() {
         return Habitat.AQUATIC;
+    }
+
+    @Override
+    public String toString() {
+        return "A boat made of " + material + " material.\n";
     }
 }

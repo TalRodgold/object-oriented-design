@@ -1,4 +1,5 @@
- 
+package Ex07Skeleton;
+
 public class Kite extends Element {
     Color color;
 
@@ -14,7 +15,12 @@ public class Kite extends Element {
     public void setColor(Color color) {
         this.color = color;
     }
-	
+
+    @Override
+    void accept(Visitor visitor){
+        visitor.visit(this);
+    }
+
     @Override
     public String getName() {
         return "kite";
@@ -23,5 +29,10 @@ public class Kite extends Element {
     @Override
     public Habitat getHabitat() {
         return Habitat.TERRESTRIAL;
+    }
+    @Override
+
+    public String toString() {
+        return "A kite of color: " + color + ".\n";
     }
 }

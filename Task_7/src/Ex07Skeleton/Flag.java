@@ -1,4 +1,4 @@
- 
+package Ex07Skeleton;
 
 public class Flag extends Element {
 
@@ -18,6 +18,11 @@ public class Flag extends Element {
 
     public int getCarrierHeight() {
         return carrierHeight;
+    }
+
+    @Override
+    void accept(Visitor visitor){
+        visitor.visit(this);
     }
 
     @Override
