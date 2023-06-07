@@ -12,6 +12,9 @@ public class Lake extends Element {
         this.diameter = diameter;
         this.childElements = new ArrayList<>();
     }
+    public void addChildElements(Element e){
+        childElements.add(e);
+    }
 
     @Override
     void accept(Visitor visitor){

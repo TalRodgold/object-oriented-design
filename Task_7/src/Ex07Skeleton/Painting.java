@@ -19,7 +19,18 @@ public class Painting {
         }
         else {
             Element containingElement = pathToElementMap.get(element.getPath());
-            //TODO: implement
+            if (containingElement.getClass().getName().equals("Lake") || containingElement.getClass().getName().equals("Island")){
+                if (element.getClass().getName().equals("Flag")){
+                    pathToElementMap.remove(element);
+                    System.out.println( (containingElement).getName() + " cannot contain flag\n");
+                }
+                else{
+                    this.pathToElementMap.get(element.getPath()).addChildElements(element);
+                }
+            }
+            else{
+                this.pathToElementMap.get(element.getPath()).addChildElements(element);
+            }
         }
     }
 

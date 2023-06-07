@@ -3,8 +3,6 @@ package Ex07Skeleton;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
@@ -25,7 +23,6 @@ public class Main {
     }
     public static Painting readElementDetails(String path) throws IOException {
         Painting painting = new Painting();
-        Map<String, Element> files = new HashMap();
 
         Files.lines(Paths.get(path))
             .map(str -> ElementDetailsFactory.getPaintingElement(str))
@@ -46,7 +43,7 @@ public class Main {
         while (!(myString = scanner.nextLine()).equals("q")) {
             switch (myString) {
                 case "c":
-                    System.out.println(( root.pathToElementMap).size());
+                    System.out.println(( root.elementList).size());
                     break;
                 case "sh":
                     for (Entry<String, Element> entry : root.pathToElementMap.entrySet()) {
@@ -69,7 +66,7 @@ public class Main {
                     break;
                 case "lp":
                     for (Entry<String, Element> entry : root.pathToElementMap.entrySet()) {
-                        System.out.println(entry.toString());
+                        System.out.println(entry.getValue().toString());
                     }
 
                         //An empty island named Madagascar.
@@ -122,4 +119,5 @@ public class Main {
         // TODO: Use a Paper-Element Factory to create a decorated Hamburger
         return null;
     }
+
 }

@@ -33,4 +33,9 @@ public class Kid extends Element {
     public Habitat getHabitat() {
         return Habitat.AMPHIBIAN;
     }
+
+    @Override
+    public String toString() {
+        return "A kid born in  " + birthYear + "\n";
+    }
 }

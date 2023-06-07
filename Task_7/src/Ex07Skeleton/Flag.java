@@ -34,4 +34,9 @@ public class Flag extends Element {
     public Habitat getHabitat() {
         return Habitat.TERRESTRIAL;
     }
+
+    @Override
+    public String toString() {
+        return "A flag with a height of " + carrierHeight + "\n";
+    }
 }

@@ -40,4 +40,8 @@ public abstract class Element{
     public abstract String getName();
     public abstract Habitat getHabitat();
 
+    public void addChildElements(Element element) {
+    }
+
+
 }

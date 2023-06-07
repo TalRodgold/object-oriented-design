@@ -13,10 +13,14 @@ public class Island extends Element {
         this.diameter = diameter;
         this.childElements = new ArrayList<>();
     }
+    public void addChildElements(Element e){
+        childElements.add(e);
+    }
 
     @Override
     void accept(Visitor visitor){
         visitor.visit(this);
+
     }
 
     @Override
@@ -40,4 +44,5 @@ public class Island extends Element {
         }
         return str;
     }
+
 }
