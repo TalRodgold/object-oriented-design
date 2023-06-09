@@ -6,7 +6,11 @@ public abstract class Element{
     private String path;
     private String name;
 
-    abstract void accept(Visitor visitor);
+    abstract void accept(taVisitor visitor);
+    abstract void accept(spVisitor visitor);
+    abstract void accept(lpVisitor visitor);
+    abstract void accept(cVisitor visitor);
+
 
     public double getWidth() {
         return width;

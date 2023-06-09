@@ -1,7 +1,7 @@
 package Ex07Skeleton;
 
 // Visitor interface
-public interface Visitor {
+public interface SP_Visitor {
     void visit(Kite kite);
     void visit(Boat boat);
     void visit(Flag flag);

@@ -19,20 +19,20 @@ public class Painting {
         }
         else {
             Element containingElement = pathToElementMap.get(element.getPath());
-            if (containingElement.getClass().getName().equals("Lake") || containingElement.getClass().getName().equals("Island")){
-                if (element.getClass().getName().equals("Flag")){
-                    pathToElementMap.remove(element);
+            if (containingElement.getClass().getName().equals("Lake") && element.getClass().getName().equals("Flag")){
                     System.out.println( (containingElement).getName() + " cannot contain flag\n");
                 }
-                else{
-                    this.pathToElementMap.get(element.getPath()).addChildElements(element);
+                else if(containingElement.getClass().getName().equals("Lake"))
+                {
+                    ((Lake)containingElement).add_child(element);
+                }
+                else if(containingElement.getClass().getName().equals("Island"))
+                {
+                    ((Island)containingElement).add_child(element);
                 }
             }
-            else{
-                this.pathToElementMap.get(element.getPath()).addChildElements(element);
-            }
         }
-    }
+
 
 
     public String getName() {

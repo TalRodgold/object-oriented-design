@@ -1,4 +1,4 @@
-package Ex07Skeleton;// TODO: Implement Composite (change this file).
+package Ex07Skeleton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +13,51 @@ public class Island extends Element {
         this.diameter = diameter;
         this.childElements = new ArrayList<>();
     }
+    void add_child(Element e)
+    {
+        childElements.add(e);
+    }
     public void addChildElements(Element e){
         childElements.add(e);
     }
-
+    public List<Element> GetChildElements(){
+        return childElements;
+    }
     @Override
-    void accept(Visitor visitor){
+    void accept(cVisitor visitor){
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
         visitor.visit(this);
 
+    }
+    @Override
+    void accept(taVisitor visitor){
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
+        visitor.visit(this);
+
+    }
+    @Override
+    void accept(spVisitor visitor)
+    {
+        visitor.visit(this);
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
+    }
+    @Override
+    void accept(lpVisitor visitor)
+    {
+        visitor.visit(this);
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
     }
 
     @Override

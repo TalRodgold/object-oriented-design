@@ -14,7 +14,19 @@ public class Tree extends Element {
     }
 
     @Override
-    void accept(Visitor visitor){
+    void accept(taVisitor visitor){
+        visitor.visit(this);
+    }
+    @Override
+    void accept(spVisitor visitor){
+        visitor.visit(this);
+    }
+    @Override
+    void accept(cVisitor visitor){
+        visitor.visit(this);
+    }
+    @Override
+    void accept(lpVisitor visitor){
         visitor.visit(this);
     }
 

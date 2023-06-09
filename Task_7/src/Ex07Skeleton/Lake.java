@@ -11,14 +11,52 @@ public class Lake extends Element {
         this.name = name;
         this.diameter = diameter;
         this.childElements = new ArrayList<>();
+
+    }
+    void add_child(Element e)
+    {
+        childElements.add(e);
     }
     public void addChildElements(Element e){
         childElements.add(e);
     }
+    public List<Element> GetChildElements(){
+        return childElements;
+    }
 
     @Override
-    void accept(Visitor visitor){
+    void accept(taVisitor visitor){
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
         visitor.visit(this);
+    }
+    @Override
+    void accept(cVisitor visitor){
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
+        visitor.visit(this);
+    }
+    @Override
+    void accept(spVisitor visitor)
+    {
+        visitor.visit(this);
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
+    }
+    @Override
+    void accept(lpVisitor visitor)
+    {
+        visitor.visit(this);
+        for(Element e: childElements)
+        {
+            e.accept(visitor);
+        }
     }
 
     @Override

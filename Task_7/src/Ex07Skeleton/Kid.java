@@ -18,9 +18,18 @@ public class Kid extends Element {
     public Color getHairColor() {
         return hairColor;
     }
-
     @Override
-    void accept(Visitor visitor){
+    void accept(cVisitor visitor){
+        visitor.visit(this);
+    }
+    @Override
+    void accept(taVisitor visitor){visitor.visit(this);}
+    @Override
+    void accept(spVisitor visitor){
+        visitor.visit(this);
+    }
+    @Override
+    void accept(lpVisitor visitor){
         visitor.visit(this);
     }
 

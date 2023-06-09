@@ -1,10 +1,10 @@
 package Ex07Skeleton;
 
-public class TotalAreaVisitor implements Visitor {
+public class taVisitor implements TA_Visitor {
 
     double totalArea;
 
-    public TotalAreaVisitor() {
+    public taVisitor() {
         totalArea = 0;
     }
 
