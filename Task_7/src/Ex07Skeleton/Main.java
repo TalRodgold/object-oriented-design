@@ -87,8 +87,8 @@ public class Main {
                 "bk: book");
 
         String choice = scanner.nextLine();
-        pFactory pf = new pFactory();
-        Paper paper = pFactory.create_paper(choice);
+        PaperFactory pf = new PaperFactory();
+        Paper paper = PaperFactory.createPaper(choice);
 
         while (!choice.equals("s")) {
             System.out.println("Choose from the following options:\n" +
@@ -115,16 +115,16 @@ public class Main {
        String user_input = scanner.nextLine();
        switch (user_input){
            case "tb":
-               paper = new TBPaperDeco(paper);
+               paper = new TBPaperDecorator(paper);
                break;
            case "eq":
-               paper = new EQPaperDeco(paper);
+               paper = new EQPaperDecorator(paper);
                break;
            case "d":
-               paper = new DPaperDeco(paper);
+               paper = new DPaperDecorator(paper);
                break;
            case "nt":
-               paper = new NTPaperDeco(paper);
+               paper = new NTPaperDecorator(paper);
                break;
        }
        return paper;
