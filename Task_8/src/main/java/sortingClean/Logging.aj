@@ -48,6 +48,7 @@ public aspect Logging {
     public void afterLogging(){
         System.out.println("Total time of running all sort functions was " +
                 totalTime +  " ms");
+        System.out.println("In Detail:");
         for (Map.Entry<String, Integer> entry : counters.entrySet()) {
             if (entry.getValue() >0){
                 System.out.println("Function sort in " + entry.getKey() + " ran " + entry.getValue()
