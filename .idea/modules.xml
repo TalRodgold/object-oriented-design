@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/TEMP/TEMP.iml" filepath="$PROJECT_DIR$/TEMP/TEMP.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task_1/Task_1.iml" filepath="$PROJECT_DIR$/Task_1/Task_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task_5/Task_5.iml" filepath="$PROJECT_DIR$/Task_5/Task_5.iml" />
       <module fileurl="file://$PROJECT_DIR$/Task_7/Task_7.iml" filepath="$PROJECT_DIR$/Task_7/Task_7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_8/Task_8.iml" filepath="$PROJECT_DIR$/Task_8/Task_8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Task_9/Task_9.iml" filepath="$PROJECT_DIR$/Task_9/Task_9.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/object-oriented-design.iml" filepath="$PROJECT_DIR$/.idea/object-oriented-design.iml" />
     </modules>
   </component>
